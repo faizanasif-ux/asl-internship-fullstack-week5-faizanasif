@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -191,7 +191,7 @@
       params.set('order', order);
 
       try {
-        const res = await fetch('http://localhost:5000/api/tasks?' + params.toString(), {
+        const res = await fetch('https://asl-internship-fullstack-week4-faizanasif-production-6c2f.up.railway.app/api/tasks?' + params.toString(), {
           headers: { 'Authorization': 'Bearer ' + token }
         });
 
@@ -229,11 +229,11 @@
         taskDiv.className = 'task';
 
         const thumbHtml = task.thumbnail
-          ? `<img class="task-thumb" src="http://localhost:5000${task.thumbnail}" alt="thumbnail">`
+          ? `<img class="task-thumb" src="https://asl-internship-fullstack-week4-faizanasif-production-6c2f.up.railway.app${task.thumbnail}" alt="thumbnail">`
           : '';
 
         const attachmentLink = task.attachment
-          ? `<br><a href="http://localhost:5000${task.attachment}" target="_blank">View Attachment</a>`
+          ? `<br><a href="https://asl-internship-fullstack-week4-faizanasif-production-6c2f.up.railway.app${task.attachment}" target="_blank">View Attachment</a>`
           : '';
 
         taskDiv.innerHTML = `
@@ -290,7 +290,7 @@
       }
 
       try {
-        const res = await fetch('http://localhost:5000/api/tasks', {
+        const res = await fetch('https://asl-internship-fullstack-week4-faizanasif-production-6c2f.up.railway.app/api/tasks', {
           method: 'POST',
           headers: {
             'Authorization': 'Bearer ' + token
@@ -331,7 +331,7 @@
       const messageEl = document.getElementById('message');
 
       try {
-        const res = await fetch('http://localhost:5000/api/tasks/' + taskId, {
+        const res = await fetch('https://asl-internship-fullstack-week4-faizanasif-production-6c2f.up.railway.app/api/tasks/' + taskId, {
           method: 'DELETE',
           headers: { 'Authorization': 'Bearer ' + token }
         });
