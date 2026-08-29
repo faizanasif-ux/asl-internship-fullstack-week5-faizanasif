@@ -25,3 +25,10 @@ Task thumbnail images were all loading immediately on page load, even ones not v
 Added the loading="lazy" attribute to task thumbnail images in client/dashboard.html, so images only load when they scroll into view instead of all loading immediately.
 
 **File changed:** client/dashboard.html
+
+## Bonus: Accessibility Improvements
+
+- Added semantic <label> tags to all form inputs (login, register) for screen reader support
+- Improved image alt text from generic 'thumbnail' to descriptive 'Task thumbnail image'
+- Added Enter-key submission on password field for full keyboard navigation support
+- Verified color contrast on buttons meets WCAG AA standard (white text on #2196F3 / #4CAF50 backgrounds)
