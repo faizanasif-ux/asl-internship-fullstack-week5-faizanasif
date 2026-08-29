@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
@@ -7,7 +7,6 @@ const User = require('../models/User');
 
 const router = express.Router();
 
-// Bonus: rate limiting on login (max 5 attempts per 15 minutes per IP)
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 5,
@@ -57,6 +56,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', loginLimiter, async (req, res) => {
   try {
+    const start = Date.now();
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -64,11 +64,13 @@ router.post('/login', loginLimiter, async (req, res) => {
     }
 
     const user = await User.findOne({ email });
+    console.log(`DB query took: ${Date.now() - start}ms`);
     if (!user) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
+    console.log(`bcrypt compare took: ${Date.now() - start}ms (total so far)`);
     if (!isMatch) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
@@ -88,7 +90,6 @@ router.post('/login', loginLimiter, async (req, res) => {
   }
 });
 
-// Bonus: refresh token endpoint - exchange a valid refresh token for a new access token
 router.post('/refresh-token', async (req, res) => {
   try {
     const { refreshToken } = req.body;
@@ -112,7 +113,6 @@ router.post('/refresh-token', async (req, res) => {
   }
 });
 
-// Bonus: mock password-reset flow (no real email is sent, token is returned directly)
 router.post('/forgot-password', async (req, res) => {
   try {
     const { email } = req.body;
@@ -124,7 +124,7 @@ router.post('/forgot-password', async (req, res) => {
 
     const resetToken = crypto.randomBytes(20).toString('hex');
     user.resetToken = resetToken;
-    user.resetTokenExpiry = Date.now() + 15 * 60 * 1000; // 15 minutes
+    user.resetTokenExpiry = Date.now() + 15 * 60 * 1000;
     await user.save();
 
     res.status(200).json({

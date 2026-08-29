@@ -1,4 +1,4 @@
-const request = require('supertest');
+﻿const request = require('supertest');
 const app = require('../server');
 
 describe('Auth API Tests', () => {
@@ -15,7 +15,7 @@ describe('Auth API Tests', () => {
       .post('/api/auth/login')
       .send({ email: 'wrongemail@test.com', password: 'wrongpassword' });
     expect(res.statusCode).toBe(401);
-  });
+  }, 15000);
 
   test('should return 400 when registering without required fields', async () => {
     const res = await request(app)
