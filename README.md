@@ -1,48 +1,72 @@
-# ASL Internship - Week 5 Full Stack App
+﻿# ASL Internship — Full Stack Capstone (Week 6)
 
-## Description
-Full stack task management application with user authentication, CRUD operations, automated testing, centralized error handling, and cloud deployment. Built across Weeks 1-5 of the Advance Soft Logics Full Stack Web Development internship track.
+## What This Project Does
+A full stack task management application with user authentication (JWT-based), file uploads (Cloudinary), and CRUD operations for tasks. Built as part of the Advance Soft Logics Full Stack Web Development internship track (Weeks 1-6).
 
-## Live Links
-- Frontend: https://melodious-flan-2cf0a5.netlify.app/login.html
-- Backend/API: https://asl-internship-fullstack-week4-faizanasif-production-6c2f.up.railway.app
-- Health Check: https://asl-internship-fullstack-week4-faizanasif-production-6c2f.up.railway.app/api/health
+## Tech Stack
+- **Backend:** Node.js, Express 5, MongoDB (Mongoose), JWT authentication, bcryptjs
+- **File Uploads:** Cloudinary + Multer
+- **Frontend:** Plain HTML, CSS, JavaScript
+- **Testing:** Jest + Supertest
+- **CI/CD:** GitHub Actions (auto test on push)
+- **Deployment:** Railway (auto-deploy from GitHub)
 
 ## Setup Instructions
-1. Clone the repository
-2. Navigate to server folder: cd server
-3. Install dependencies: npm install
-4. Create a .env file based on .env.example with your own MongoDB URI, JWT secret, and port
-5. Run the backend: npm run dev
-6. Open the client HTML files (login.html, register.html, dashboard.html) in a browser, or serve the client folder
+1. Clone the repo:
+git clone https://github.com/faizanasif-ux/asl-internship-fullstack-week4-faizanasif.git
+cd asl-internship-fullstack-week4-faizanasif/server
+2. Install dependencies:
+npm install
 
+3. Copy `.env.example` to `.env` and fill in your own values (MongoDB URI, JWT secret, Cloudinary keys)
+4. Run the server:
+
+npm run dev
+
+5. Open the frontend by opening `client/login.html` in your browser (or serve it via a local static server
 ## Folder Structure
-- client/ - Frontend HTML, CSS, and JavaScript files (login, register, dashboard)
-- server/ - Backend Express API
-  - routes/ - Auth and task API routes
-  - middleware/ - Auth middleware, upload middleware, error handler
-  - models/ - Mongoose schemas
-  - tests/ - Unit and integration tests
-  - utils/ - Helper functions
-  - config/ - Cloudinary configuration
-- .github/workflows/ - GitHub Actions CI workflow
 
-## How to Run Tests
-1. cd server
-2. npm install
-3. npm test
+week4-project/
+├── client/ # Frontend (HTML/CSS/JS)
+│ ├── login.html
+│ ├── register.html
+│ └── dashboard.html
+├── server/ # Backend
+│ ├── routes/ # authRoutes.js, taskRoutes.js
+│ ├── models/ # User.js
+│ ├── middleware/ # errorHandler.js
+│ ├── utils/ # logger.js, helper.js
+│ ├── tests/ # Jest test suites
+│ └── server.js
+├── PERFORMANCE.md # Performance optimization log
+└── README.md
 
-## Features Implemented
-- User authentication (register/login) with JWT
-- Task CRUD operations with pagination, filtering, search
-- File upload support
-- 3+ Integration tests (Jest + Supertest)
-- Unit tests for utility functions
-- Centralized error-handling middleware
-- Environment variable configuration (.env.example provided)
-- Request logging (morgan)
-- Rate limiting on login endpoint
-- Health check endpoint
-- GitHub Actions CI workflow
-- Backend deployed on Railway
-- Frontend deployed on Netlify
+## Features
+- User registration and login with JWT authentication
+- Password reset flow (mock, token-based)
+- Task CRUD operations with pagination, filtering, and search
+- File/image upload support via Cloudinary
+- Rate limiting on login (max 5 attempts per 15 minutes)
+- Centralized error handling with file-based error logging
+- Automated tests (Jest + Supertest) with CI via GitHub Actions
+- Accessibility: semantic labels, descriptive alt text, keyboard navigation support
+
+## Performance Optimizations (Week 6)
+See `PERFORMANCE.md` for full before/after details. Summary:
+- Fixed slow login endpoint (~3900ms to ~200-1200ms) by awaiting MongoDB connection before accepting requests
+- Added lazy loading to task thumbnail images on the frontend
+
+## Bonus Features Implemented
+- Health/status endpoint at `/api/health`
+- File-based error logging (`server/error.log`)
+- Accessibility improvements (labels, alt text, keyboard nav)
+- Custom Railway subdomain: `faizan-capstone-app.up.railway.app`
+
+## Live Links
+- **Frontend/Backend (Custom Domain):** https://faizan-capstone-app.up.railway.app
+- **API Health Check:** https://faizan-capstone-app.up.railway.app/api/health
+- **GitHub Repo:** https://github.com/faizanasif-ux/asl-internship-fullstack-week4-faizanasif
+
+## Notes
+- `.env` is git-ignored; use `.env.example` as a reference for required environment variables.
+- Run `npm test` inside the `server/` folder to run the automated test suite.
