@@ -9,12 +9,12 @@ A full stack task management application with user authentication (JWT-based), f
 - **Frontend:** Plain HTML, CSS, JavaScript
 - **Testing:** Jest + Supertest
 - **CI/CD:** GitHub Actions (auto test on push)
-- **Deployment:** Railway (auto-deploy from GitHub)
+- **Deployment:** Railway (backend) + GitHub Pages (frontend)
 
 ## Setup Instructions
 1. Clone the repo:
-git clone https://github.com/faizanasif-ux/asl-internship-fullstack-week4-faizanasif.git
-cd asl-internship-fullstack-week4-faizanasif/server
+git clone https://github.com/faizanasif-ux/asl-internship-fullstack-week6-capstone-faizanasif.git
+cd asl-internship-fullstack-week6-capstone-faizanasif/server
 2. Install dependencies:
 npm install
 
@@ -23,10 +23,11 @@ npm install
 
 npm run dev
 
-5. Open the frontend by opening `client/login.html` in your browser (or serve it via a local static server
+5. Open the frontend by opening `client/login.html` in your browser (or serve it via a local static server)
+
 ## Folder Structure
 
-week4-project/
+week6-capstone/
 ├── client/ # Frontend (HTML/CSS/JS)
 │ ├── login.html
 │ ├── register.html
@@ -60,12 +61,11 @@ See `PERFORMANCE.md` for full before/after details. Summary:
 - Health/status endpoint at `/api/health`
 - File-based error logging (`server/error.log`)
 - Accessibility improvements (labels, alt text, keyboard nav)
-- Custom Railway subdomain: `faizan-capstone-app.up.railway.app`
+- Custom Railway subdomain for backend
 
 ## Live Links
-- **Frontend/Backend (Custom Domain):** https://faizan-capstone-app.up.railway.app
-- **API Health Check:** https://faizan-capstone-app.up.railway.app/api/health
-- **GitHub Repo:** https://github.com/faizanasif-ux/asl-internship-fullstack-week4-faizanasif
+- **Backend (API):** https://faizan-capstone-app.up.railway.app
+- **Frontend:** https://faizanasif-ux.github.io/asl-internship-fullstack-week6-capstone-faizanasif/client/login.html
 
 ## Notes
 - `.env` is git-ignored; use `.env.example` as a reference for required environment variables.
