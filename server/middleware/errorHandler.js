@@ -1,4 +1,6 @@
-﻿const logError = require('../utils/logger');
+﻿// Centralized error handler - catches errors passed via next(err) from any route
+// and also logs them to a file for later debugging (bonus feature)
+const logError = require('../utils/logger');
 
 function errorHandler(err, req, res, next) {
   console.error(err.stack);
