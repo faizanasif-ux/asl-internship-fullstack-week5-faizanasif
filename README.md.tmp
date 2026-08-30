@@ -65,7 +65,6 @@ See `PERFORMANCE.md` for full before/after details. Summary:
 
 ## Live Links
 - **Backend (API):** https://faizan-capstone-app.up.railway.app
-- **Frontend:** https://faizanasif-ux.github.io/asl-internship-fullstack-week6-capstone-faizanasif/client/login.html
 
 ## Notes
 - `.env` is git-ignored; use `.env.example` as a reference for required environment variables.
